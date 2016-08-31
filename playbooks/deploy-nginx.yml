@@ -5,7 +5,6 @@
   - name: pull latest nginx
     shell: cd /etc/nginx && sudo git pull
   - name: build nginx image
-    shell: cd /etc/nginx && sudo docker build -t "nginx" /opt/deploy/nginx
+    shell: sudo docker build -t "nginx" /etc/nginx
   - name: delete container
     shell: sudo docker kill {{ container_name }} && sudo docker rm {{ container_name }}
-  
