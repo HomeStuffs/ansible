@@ -4,17 +4,17 @@ TARGET=$1
 NODE=$2
 CRAWLER=$3
 
-all-playbooks=false
+all_playbooks=false
 if [ "${NODE}" = "all"]; then
-  all-playbooks=true
+  all_playbooks=true
 fi
 
-if [ "${NODE}" = "nginx" ] || [ "${all-playbooks}" = true]; then
+if [ "${NODE}" = "nginx" ] || [ "${all_playbooks}" = true]; then
   /etc/ansible/bin/ansible-playbook -i /etc/ansible/hosts \
   --extra-vars="target=${TARGET}" \
   /opt/deploy/ansible/playbooks/deploy/deploy-nginx.yml
 
-elif [ "${NODE}" = "scrapy" ] || [ "${all-playbooks}" = true]; then
+elif [ "${NODE}" = "scrapy" ] || [ "${all_playbooks}" = true]; then
   /etc/ansible/bin/ansible-playbook -i /etc/ansible/hosts \
   --extra-vars="target=${TARGET} docker_host_ip=${DOCKER_HOST_IP} crawler=${CRAWLER}" \
   /opt/deploy/ansible/playbooks/deploy/deploy-scrapy.yml
