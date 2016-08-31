@@ -10,3 +10,4 @@ http_port: 80
 max_clients: 200
 
 container_name: nginx
+container_port: 3001
