@@ -1,6 +1,7 @@
 ---
 - hosts: "{{ target }}"
-
+  roles:
+    - nginx
   tasks:
   - name: pull latest nginx
     shell: cd /etc/nginx && sudo git pull
