@@ -5,8 +5,8 @@
     - nginx
   tasks:
   - name: pull latest nginx
-    shell: cd /etc/nginx && git pull
+    shell: cd /etc/nginx && sudo git pull
   - name: build nginx image
-    shell: docker build -t "nginx" /etc/nginx
+    shell: sudo docker build -t "nginx" /etc/nginx
   - name: delete container
-    shell: docker kill {{ container_name }} && docker rm {{ container_name }}
+    shell: sudo docker kill {{ container_name }} && docker rm {{ container_name }}
