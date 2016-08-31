@@ -1,0 +1,5 @@
+vars:
+  include: ../var/nginx.yml
+tasks:
+  name: example task
+  shell: echo hi
