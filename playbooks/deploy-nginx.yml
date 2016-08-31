@@ -1,13 +1,13 @@
 ---
 - hosts: "{{ target }}"
   remote_user: root
-  become: yes
-  become_user: postgres
   roles:
     - nginx
   tasks:
   - name: pull latest nginx
-    shell: cd /etc/nginx && sudo git pull
+    shell: cd /etc/nginx && git pull
+    become: yes
+    become_method: sudo
   - name: build nginx image
     shell: sudo docker build -t "nginx" /etc/nginx
   - name: delete container
