@@ -6,8 +6,6 @@
   tasks:
   - name: pull latest nginx
     shell: cd /etc/nginx && git pull
-    become: yes
-    become_method: sudo
   - name: build nginx image
     shell: sudo docker build -t "nginx" /etc/nginx
   - name: delete container
