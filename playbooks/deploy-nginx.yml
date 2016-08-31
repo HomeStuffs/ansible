@@ -16,5 +16,5 @@
     ignore_errors: yes
 
   - name: run new container
-    shell: (sudo docker run -d --name nginx -p {{ container_port }}:{{ http_port }} 
-      --add-host dockerhost: {{ docker_host_ip }} nginx)
+    shell: (sudo docker run -d --name nginx -p {{ container_port }}:{{ http_port }}
+      --add-host dockerhost:{{ docker_host_ip }} nginx)
