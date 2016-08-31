@@ -1,0 +1,21 @@
+---
+- hosts: "{{ target }}"
+  remote_user: root
+  roles:
+    - common
+    - nginx
+  tasks:
+
+  - name: pull latest scrapy
+    shell: cd /etc/scrapy && sudo git pull
+
+  - name: build scrapy image
+    shell: sudo docker build -t "scrapy" /etc/scrapy
+
+  - name: delete scrapy container
+    shell: sudo docker kill {{ container_name }} && sudo docker rm {{ container_name }}
+    ignore_errors: yes
+
+  - name: run new scrapy container
+    shell: (sudo docker run -d --name scrapy-{{ crawler }} --link {{ es_container_name }}:elasticsearch
+      scrapy crawl {{ crawler }})

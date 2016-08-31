@@ -8,13 +8,16 @@
   - name: pull latest nginx
     shell: cd /etc/nginx && sudo git pull
 
+  - name: editing nginx vars
+    shell: echo hi
+
   - name: build nginx image
     shell: sudo docker build -t "nginx" /etc/nginx
 
-  - name: delete container
-    shell: sudo docker kill {{ container_name }} && docker rm {{ container_name }}
+  - name: delete nginx container
+    shell: sudo docker kill {{ container_name }} && sudo docker rm {{ container_name }}
     ignore_errors: yes
 
-  - name: run new container
-    shell: (sudo docker run -d --name nginx -p {{ container_port }}:{{ http_port }}
+  - name: run new nginx container
+    shell: (sudo docker run -d --name nginx -p 0.0.0.0:{{ container_port }}:{{ http_port }}
       --add-host dockerhost:{{ docker_host_ip }} nginx)

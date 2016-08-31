@@ -1,7 +1,0 @@
----
-- hosts: "{{ target }}"
-  roles:
-    - nginx
-  tasks:
-  - name: example task
-    shell: echo {{ http_port }}
