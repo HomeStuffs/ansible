@@ -2,23 +2,24 @@
 - hosts: "{{ target }}"
   remote_user: root
   roles:
+    - ../roles/common
     - ../roles/nginx
   tasks:
 
   - name: checkout latest nginx
-    shell: cd /etc/nginx && sudo git pull && sudo git checkout .
+    shell: cd {{ nginx_root_folder }} && sudo git pull && sudo git checkout .
 
   - name: edit nginx.conf config
-    shell: "sudo sed -i -e 's%{{ item.key }}%{{ item.value }}%g' /etc/nginx/nginx.conf"
+    shell: "sudo sed -i -e 's%{{ item.key }}%{{ item.value }}%g' {{ nginx_root_folder }}/nginx.conf"
     with_dict: "{{ replace }}"
 
   - name: build nginx image
-    shell: sudo docker build -t "nginx" /etc/nginx
+    shell: sudo docker build -t {{ nginx_image }} {{ nginx_root_folder }}
 
   - name: delete nginx container
-    shell: sudo docker rm -f {{ container_name }}
+    shell: sudo docker rm -f {{ nginx_container }}
     ignore_errors: yes
 
   - name: run new nginx container
-    shell: (sudo docker run -d --name nginx -p 0.0.0.0:{{ container_port }}:{{ http_port }}
-      --add-host dockerhost:{{ docker_host_ip }} nginx)
+    shell: (sudo docker run -d --name {{ nginx_container }} -p 0.0.0.0:{{ nginx_container_port }}:{{ http_port }}
+      --add-host dockerhost:{{ docker_host_ip }} {{ nginx_image }})

@@ -7,15 +7,15 @@
   tasks:
 
   - name: pull latest scrapy
-    shell: cd /etc/scrapy && sudo git pull && sudo git checkout .
+    shell: cd {{ scrapy_root_folder }} && sudo git pull && sudo git checkout .
 
   - name: build scrapy image
-    shell: sudo docker build -t "scrapy" /etc/scrapy
+    shell: sudo docker build -t {{ scrapy_image }} {{ scrapy_root_folder }}
 
   - name: delete scrapy container
-    shell: sudo docker rm -f {{ container_name }}
+    shell: sudo docker rm -f {{ scrapy_container  }}
     ignore_errors: yes
 
   - name: run new scrapy container
-    shell: (sudo docker run -d --name scrapy-{{ crawler }} --link {{ es_container_name }}:elasticsearch
-      scrapy crawl {{ crawler }})
+    shell: (sudo docker run -d --name {{ scrapy_container }}-{{ crawler }} --link {{ es_container }}:elasticsearch
+      {{ scrapy_image }} crawl {{ crawler }})

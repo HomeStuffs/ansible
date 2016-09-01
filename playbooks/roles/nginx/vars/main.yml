@@ -1,6 +1,4 @@
 ---
-container_name: nginx
-container_port: 3001
 http_port: 443
 
 replace:

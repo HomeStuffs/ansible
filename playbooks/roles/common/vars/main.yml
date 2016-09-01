@@ -1,2 +1,17 @@
 ---
-es_container_name: elasticsearch
+es_image: elasticsearch
+es_container: elasticsearch
+
+nginx_image: nginx
+nginx_container: nginx
+nginx_container_port: 3001
+nginx_root_folder: /opt/deploy/nginx
+
+node_server_image: node-server
+node_server_container: node-server
+node_server_container_port: 8081
+node_server_root_folder: /opt/deploy/node-server
+
+scrapy_image: scrapy
+scrapy_container: scrapy
+scrapy_root_folder: /opt/deploy/recipes-scraper
