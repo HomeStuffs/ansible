@@ -13,10 +13,9 @@ replace:
 
   REPLACE_HTTP_INCLUDE: /etc/nginx/mime.types
   REPLACE_HTTP_DEFAULT_TYPE: application/octet-stream
-  REPLACE_HTTP_LOG_FORMAT: >
-                              main \$remote_addr - \$remote_user [$time_local] \"\$request\"
-                              \$status \$body_bytes_sent \"\$http_referer\"
-                              \"\$http_user_agent\" \"\$http_x_forwarded_for\"
+  REPLACE_HTTP_LOG_FORMAT: 'main \$remote_addr - \$remote_user [$time_local] \"\$request\"
+                            \$status \$body_bytes_sent \"\$http_referer\"
+                            \"\$http_user_agent\" \"\$http_x_forwarded_for\"'
   REPLACE_HTTP_ACCESS_LOG: /var/log/nginx/access.log main
   REPLACE_HTTP_SEND_FILE: on
   REPLACE_HTTP_TCP_NOPUSH: on
