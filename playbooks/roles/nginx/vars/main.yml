@@ -25,5 +25,5 @@ replace:
 
   REPLACE_KIBANA_ENDPOINT: /kibana
   REPLACE_KIBANA_PROXY: http://dockerhost:5601/app/kibana
-  REPLACE_NODEJS_ENDPOINT: /home
-  REPLACE_NODEJS_PROXY: http://dockerhost:8081
+  REPLACE_NODE_SERVER_ENDPOINT: /home
+  REPLACE_NODE_SERVER_PROXY: http://dockerhost:8081
