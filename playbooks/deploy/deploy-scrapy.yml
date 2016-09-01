@@ -7,7 +7,7 @@
   tasks:
 
   - name: pull latest scrapy
-    shell: cd /etc/scrapy && sudo git pull
+    shell: cd /etc/scrapy && sudo git pull && sudo git checkout .
 
   - name: build scrapy image
     shell: sudo docker build -t "scrapy" /etc/scrapy

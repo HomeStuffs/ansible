@@ -19,4 +19,9 @@ elif [ "${NODE}" = "scrapy" ] || [ "${all_playbooks}" = true]; then
   --extra-vars="target=${TARGET} crawler=${CRAWLER}" \
   /opt/deploy/ansible/playbooks/deploy/deploy-scrapy.yml
 
+elif [ "${NODE}" = "nodejs" ] || [ "${all_playbooks}" = true]; then
+  /etc/ansible/bin/ansible-playbook -i /etc/ansible/hosts \
+  --extra-vars="target=${TARGET}" \
+  /opt/deploy/ansible/playbooks/deploy/deploy-nodejs.yml
+
 fi
