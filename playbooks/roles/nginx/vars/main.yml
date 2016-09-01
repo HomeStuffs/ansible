@@ -21,6 +21,7 @@ replace:
   REPLACE_HTTP_TCP_NOPUSH: "on"
   REPLACE_HTTP_KEEPALIVE_TIMEOUT: 60
   REPLACE_HTTP_GZIP: "on"
+  REPLACE_HTTP_PORT: {{ http_port }}
 
   REPLACE_KIBANA_ENDPOINT: /kibana
   REPLACE_KIBANA_PROXY: http://dockerhost:5601/app/kibana
