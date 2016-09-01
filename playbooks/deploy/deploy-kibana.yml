@@ -1,0 +1,20 @@
+---
+- hosts: "{{ target }}"
+  remote_user: root
+  roles:
+    - ../roles/common
+  tasks:
+
+  - name: checkout latest kibana
+    shell: cd {{ kibana_root_folder }} && sudo git pull && sudo git checkout .
+
+  - name: build kibana image
+    shell: sudo docker build -t {{ kibana_image }} {{ kibana_root_folder }}
+
+  - name: delete kibana container
+    shell: sudo docker rm -f {{ kibana_container }}
+    ignore_errors: yes
+
+  - name: run new kibana container
+    shell: (sudo docker run -d --name {{ kibana_container }} -p 127.0.0.1:{{ kibana_container_port }}:{{ kibana_container_port }}
+      --link {{ es_container }}:elasticsearch {{ kibana_image }})

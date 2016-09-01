@@ -1,6 +1,14 @@
 ---
 es_image: elasticsearch
 es_container: elasticsearch
+es_container_port: 9200
+es_root_folder: /opt/deploy/elasticsearch
+es_mount_folder: /home/elasticsearch/app/data
+
+kibana_image: kibana
+kibana_container: kibana
+kibana_container_port: 5601
+kibana_root_folder: /opt/deploy/kibana
 
 nginx_image: nginx
 nginx_container: nginx

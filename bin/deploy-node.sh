@@ -24,4 +24,14 @@ elif [ "${NODE}" = "node-server" ] || [ "${all_playbooks}" = true ]; then
   --extra-vars="target=${TARGET}" \
   /opt/deploy/ansible/playbooks/deploy/deploy-node-server.yml
 
+elif [ "${NODE}" = "kibana" ] || [ "${all_playbooks}" = true ]; then
+  /etc/ansible/bin/ansible-playbook -i /etc/ansible/hosts \
+  --extra-vars="target=${TARGET}" \
+  /opt/deploy/ansible/playbooks/deploy/deploy-kibana.yml
+
+elif [ "${NODE}" = "elasticsearch" ] || [ "${all_playbooks}" = true ]; then
+  /etc/ansible/bin/ansible-playbook -i /etc/ansible/hosts \
+  --extra-vars="target=${TARGET}" \
+  /opt/deploy/ansible/playbooks/deploy/deploy-elasticsearch.yml
+
 fi

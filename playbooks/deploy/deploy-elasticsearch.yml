@@ -1,0 +1,20 @@
+---
+- hosts: "{{ target }}"
+  remote_user: root
+  roles:
+    - ../roles/common
+  tasks:
+
+  - name: checkout latest elasticsearch
+    shell: cd {{ es_root_folder }} && sudo git pull && sudo git checkout .
+
+  - name: build elasticsearch image
+    shell: sudo docker build -t {{ es_image }} {{ es_root_folder }}
+
+  - name: delete elasticsearch container
+    shell: sudo docker rm -f {{ es_container }}
+    ignore_errors: yes
+
+  - name: run new elasticsearch container
+    shell: (sudo docker run -d --name {{ es_container }} -p 127.0.0.1:{{ es_container_port }}:{{ es_container_port }}
+      -v {{ es_mount_folder }}:/usr/share/elasticsearch/data {{ es_image }})
