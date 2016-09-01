@@ -12,7 +12,7 @@
     shell: sudo docker build -t {{ scrapy_image }} {{ scrapy_root_folder }}
 
   - name: delete scrapy container
-    shell: sudo docker rm -f {{ scrapy_container  }}
+    shell: sudo docker rm -f {{ scrapy_container }}-{{ crawler }}
     ignore_errors: yes
 
   - name: run new scrapy container
