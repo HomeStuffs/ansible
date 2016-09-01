@@ -2,7 +2,7 @@
 - hosts: "{{ target }}"
   remote_user: root
   roles:
-    - ../roles/nginx
+    - ../roles/node-server
   tasks:
 
   - name: checkout latest node-server
