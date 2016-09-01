@@ -5,11 +5,11 @@
     - ../roles/nginx
   tasks:
 
-  - name: pull latest nginx
-    shell: cd /etc/nginx && sudo git pull
+  - name: checkout latest nginx
+    shell: cd /etc/nginx && sudo git pull && sudo git checkout
 
   - name: edit nginx.conf config
-    shell: "sudo sed -i -e 's%\"{{ item.key }}\"%\"{{ item.value }}\"%g' /etc/nginx/nginx.conf"
+    shell: "sudo sed -i -e 's%{{ item.key }}%{{ item.value }}%g' /etc/nginx/nginx.conf"
     with_dict: "{{ replace }}"
 
   - name: build nginx image
