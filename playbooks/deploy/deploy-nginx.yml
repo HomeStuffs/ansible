@@ -15,7 +15,7 @@
     shell: sudo docker build -t "nginx" /etc/nginx
 
   - name: delete nginx container
-    shell: sudo docker kill {{ container_name }} && sudo docker rm {{ container_name }}
+    shell: sudo docker rm -f {{ container_name }}
     ignore_errors: yes
 
   - name: run new nginx container
