@@ -16,4 +16,5 @@
     ignore_errors: yes
 
   - name: run new node-server container
-    shell: (sudo docker run -d --name node-server -p 127.0.0.1:{{ node_server_container_port }}:{{ node_server_container_port }} {{ node_server_image }})
+    shell: (sudo docker run -d --name node-server -p 127.0.0.1:{{ node_server_container_port }}:{{ node_server_container_port }}
+      -e PORT="{{ node_server_container_port }}" {{ node_server_image }})
