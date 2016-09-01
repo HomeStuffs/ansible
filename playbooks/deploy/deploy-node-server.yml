@@ -3,7 +3,6 @@
   remote_user: root
   roles:
     - ../roles/common
-    - ../roles/node-server
   tasks:
 
   - name: checkout latest node-server
