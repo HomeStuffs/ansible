@@ -13,7 +13,7 @@
     shell: sudo docker build -t "scrapy" /etc/scrapy
 
   - name: delete scrapy container
-    shell: sudo docker kill {{ container_name }} && sudo docker rm {{ container_name }}
+    shell: sudo docker rm -f {{ container_name }}
     ignore_errors: yes
 
   - name: run new scrapy container
