@@ -5,16 +5,16 @@
     - ../roles/nginx
   tasks:
 
-  - name: checkout latest nodejs
+  - name: checkout latest node-server
     shell: cd /etc/nginx && sudo git pull && sudo git checkout .
 
-  - name: build nodejs image
+  - name: build node-server image
     shell: sudo docker build -t "nginx" /etc/nodejs
 
-  - name: delete nodejs container
+  - name: delete node-server container
     shell: sudo docker rm -f {{ container_name }}
     ignore_errors: yes
 
-  - name: run new nodejs container
+  - name: run new node-server container
     shell: (sudo docker run -d --name nodejs -p 127.0.0.1:{{ container_port }}:{{ container_port }}
       nginx)
