@@ -1,13 +1,29 @@
 ---
 container_name: nginx
 container_port: 3001
-
 http_port: 80
-max_clients: 200
 
-user: nginx
-worker_processes: 2
-error_log: /var/log/nginx/error.log warn
-pid: /var/run/nginx.pid
+replace:
+  REPLACE_USER: nginx
+  REPLACE_WORKER_PROCESSES: 2
+  REPLACE_ERROR_LOG: /var/log/nginx/error.log warn
+  REPLACE_PID: /var/run/nginx.pid
+  REPLACE_WORKER_CONNECTIONS: 1024
+  REPLACE_MAX_CLIENTS: 200
 
-worker_connections: 1024
+  REPLACE_HTTP_INCLUDE: /etc/nginx/mime.types
+  REPLACE_HTTP_DEFAULT_TYPE: application/octet-stream
+  REPLACE_HTTP_LOG_FORMAT: >
+                              main $remote_addr - $remote_user [$time_local] "$request"
+                              $status $body_bytes_sent "$http_referer"
+                              "$http_user_agent" "$http_x_forwarded_for"
+  REPLACE_HTTP_ACCESS_LOG: /var/log/nginx/access.log main
+  REPLACE_HTTP_SEND_FILE: on
+  REPLACE_HTTP_TCP_NOPUSH: on
+  REPLACE_HTTP_KEEPALIVE_TIMEOUT: 60
+  REPLACE_HTTP_GZIP: on
+
+  REPLACE_KIBANA_ENDPOINT: /kibana
+  REPLACE_KIBANA_PROXY: http://dockerhost:5601/app/kibana
+  REPLACE_NODEJS_ENDPOINT: /home
+  REPLACE_NODEJS_PROXY: http://dockerhost:8081

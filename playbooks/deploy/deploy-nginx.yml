@@ -8,8 +8,9 @@
   - name: pull latest nginx
     shell: cd /etc/nginx && sudo git pull
 
-  - name: editing nginx vars
-    shell: echo hi
+  - name: edit nginx.conf config
+    shell: echo "{{ item.key }} and {{ item.value }}" > /tmp/example.txt
+    with_dict: "{{ replace }}"
 
   - name: build nginx image
     shell: sudo docker build -t "nginx" /etc/nginx
