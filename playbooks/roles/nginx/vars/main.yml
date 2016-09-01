@@ -17,10 +17,10 @@ replace:
                             \$status \$body_bytes_sent \"\$http_referer\"
                             \"\$http_user_agent\" \"\$http_x_forwarded_for\"'
   REPLACE_HTTP_ACCESS_LOG: /var/log/nginx/access.log main
-  REPLACE_HTTP_SEND_FILE: 'on'
-  REPLACE_HTTP_TCP_NOPUSH: 'on'
+  REPLACE_HTTP_SEND_FILE: "'on'"
+  REPLACE_HTTP_TCP_NOPUSH: "'on'"
   REPLACE_HTTP_KEEPALIVE_TIMEOUT: 60
-  REPLACE_HTTP_GZIP: 'on'
+  REPLACE_HTTP_GZIP: "'on'"
 
   REPLACE_KIBANA_ENDPOINT: /kibana
   REPLACE_KIBANA_PROXY: http://dockerhost:5601/app/kibana
