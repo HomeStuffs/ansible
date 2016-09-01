@@ -7,7 +7,7 @@
   tasks:
 
   - name: checkout latest nginx
-    shell: cd {{ nginx_root_folder }} && sudo git pull && sudo git checkout .
+    shell: cd {{ nginx_root_folder }} && sudo git checkout . && sudo git pull
 
   - name: edit nginx.conf config
     shell: "sudo sed -i -e 's%{{ item.key }}%{{ item.value }}%g' {{ nginx_root_folder }}/nginx.conf"

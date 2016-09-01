@@ -6,7 +6,7 @@
   tasks:
 
   - name: checkout latest kibana
-    shell: cd {{ kibana_root_folder }} && sudo git pull && sudo git checkout .
+    shell: cd {{ kibana_root_folder }} && sudo git checkout . && sudo git pull
 
   - name: build kibana image
     shell: sudo docker build -t {{ kibana_image }} {{ kibana_root_folder }}

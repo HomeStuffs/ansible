@@ -7,7 +7,7 @@
   tasks:
 
   - name: checkout latest node-server
-    shell: cd {{ node_server_root_folder }} && sudo git pull && sudo git checkout .
+    shell: cd {{ node_server_root_folder }} && sudo git checkout . && sudo git pull
 
   - name: build node-server image
     shell: sudo docker build -t {{ node_server_image }} {{ node_server_root_folder }}

@@ -6,7 +6,7 @@
   tasks:
 
   - name: checkout latest elasticsearch
-    shell: cd {{ es_root_folder }} && sudo git pull && sudo git checkout .
+    shell: cd {{ es_root_folder }} && sudo git checkout . && sudo git pull
 
   - name: build elasticsearch image
     shell: sudo docker build -t {{ es_image }} {{ es_root_folder }}
