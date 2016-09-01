@@ -6,15 +6,14 @@
   tasks:
 
   - name: checkout latest node-server
-    shell: cd /etc/nginx && sudo git pull && sudo git checkout .
+    shell: cd /etc/node-server && sudo git pull && sudo git checkout .
 
   - name: build node-server image
-    shell: sudo docker build -t "nginx" /etc/nodejs
+    shell: sudo docker build -t "node-server" /etc/node-server
 
   - name: delete node-server container
     shell: sudo docker rm -f {{ container_name }}
     ignore_errors: yes
 
   - name: run new node-server container
-    shell: (sudo docker run -d --name nodejs -p 127.0.0.1:{{ container_port }}:{{ container_port }}
-      nginx)
+    shell: (sudo docker run -d --name node-server -p 127.0.0.1:{{ container_port }}:{{ container_port }} nginx)
