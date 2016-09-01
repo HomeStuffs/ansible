@@ -2,7 +2,7 @@
 - hosts: "{{ target }}"
   remote_user: root
   roles:
-    - nginx
+    - ../roles/nginx
   tasks:
 
   - name: pull latest nginx

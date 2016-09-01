@@ -2,8 +2,8 @@
 - hosts: "{{ target }}"
   remote_user: root
   roles:
-    - common
-    - nginx
+    - ../roles/common
+    - ../roles/nginx
   tasks:
 
   - name: pull latest scrapy
