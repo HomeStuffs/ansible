@@ -4,7 +4,7 @@ es_container: elasticsearch
 
 nginx_image: nginx
 nginx_container: nginx
-nginx_container_port: 3001
+nginx_container_port: 5601
 nginx_root_folder: /opt/deploy/nginx
 
 node_server_image: node-server
