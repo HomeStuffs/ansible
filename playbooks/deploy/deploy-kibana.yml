@@ -3,10 +3,15 @@
   remote_user: root
   roles:
     - ../roles/common
+    - ../roles/nginx
   tasks:
 
   - name: checkout latest kibana
     shell: cd {{ kibana_root_folder }} && sudo git checkout . && sudo git pull
+
+  - name: edit kibana.yml
+    shell: "sudo sed -i -e 's%{{ item.key }}%{{ item.value }}%g' /opt/kibana/config/kibana.yml"
+    with_dict: "{{ replace }}"
 
   - name: build kibana image
     shell: sudo docker build -t {{ kibana_image }} {{ kibana_root_folder }}
