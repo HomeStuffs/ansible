@@ -28,4 +28,4 @@ replace:
   REPLACE_NODE_SERVER_PROXY: http://dockerhost:8081
 
   REPLACE_CONFLUENCE_END_POINT: /confluence
-  REPLACE_CONFLUENCE_PROXY: http://dockerhost:9200
+  REPLACE_CONFLUENCE_PROXY: http://dockerhost:8090
