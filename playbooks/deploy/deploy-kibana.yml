@@ -21,5 +21,5 @@
     ignore_errors: yes
 
   - name: run new kibana container
-    shell: (sudo docker run -d --name {{ kibana_container }} -p 127.0.0.1:{{ kibana_container_port }}:{{ kibana_container_port }}
+    shell: (sudo docker run -d --name {{ kibana_container }} -p 0.0.0.0:{{ kibana_container_port }}:{{ kibana_container_port }}
       --link {{ es_container }}:elasticsearch {{ kibana_image }})

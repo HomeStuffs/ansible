@@ -16,5 +16,5 @@
     ignore_errors: yes
 
   - name: run new elasticsearch container
-    shell: (sudo docker run -d --name {{ es_container }} -p 127.0.0.1:{{ es_container_port }}:{{ es_container_port }}
+    shell: (sudo docker run -d --name {{ es_container }} -p 0.0.0.0:{{ es_container_port }}:{{ es_container_port }}
       -v {{ es_mount_folder }}:/usr/share/elasticsearch/data {{ es_image }})

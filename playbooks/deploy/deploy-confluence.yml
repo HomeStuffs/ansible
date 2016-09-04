@@ -1,0 +1,21 @@
+---
+- hosts: "{{ target }}"
+  remote_user: root
+  roles:
+    - ../roles/common
+    - ../roles/confluence
+  tasks:
+
+  - name: checkout latest confluence
+    shell: cd {{ confluence_root_folder }} && sudo git checkout . && sudo git pull
+
+  - name: build confluence image
+    shell: sudo docker build -t {{ confluence_image }} {{ confluence_root_folder }}
+
+  - name: delete confluence container
+    shell: sudo docker rm -f {{ confluence_container }}
+    ignore_errors: yes
+
+  - name: run new confluence container
+    shell: (sudo docker run -d --name {{ confluence_container }} -p 127.0.0.1:{{ confluence_container_port }}:{{ confluence_container_port }}
+      -v {{ confluence_mount_folder }}:/usr/share/elasticsearch/data {{ confluence_image }})

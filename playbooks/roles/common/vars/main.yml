@@ -10,6 +10,12 @@ kibana_container: kibana
 kibana_container_port: 5601
 kibana_root_folder: /opt/deploy/kibana
 
+confluence_image: confluence
+confluence_container: confluence
+confluence_port: 8090
+confluence_root_folder: /opt/deploy/confluence
+confluence_mount_folder: /home/confluence/app/data
+
 nginx_image: nginx
 nginx_container: nginx
 nginx_container_port: 3001
