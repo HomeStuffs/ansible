@@ -1,6 +1,6 @@
 ---
 
-- include_vars:
+include_vars:
   file: ../../common/vars/main.yml
   name: common
 
