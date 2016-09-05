@@ -37,4 +37,4 @@ replace:
 
   REPLACE_UPSTREAM_MARIA_SERVER: "{{ docker_host_name }}:{{ maria_container_port }}"
   REPLACE_MARIA_END_POINT: /maria
-  REPLACE_MARIA_PROXY: http://{{ docker_host_name }}:{{ maria_container_port }}
+  REPLACE_MARIA_PROXY: {{ docker_host_name }}:{{ maria_container_port }}
