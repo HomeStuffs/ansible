@@ -35,6 +35,5 @@ replace:
   REPLACE_CONFLUENCE_END_POINT: /confluence
   REPLACE_CONFLUENCE_PROXY: http://{{ docker_host_name }}:{{ confluence_container_port }}
 
-  REPLACE_UPSTREAM_MARIA_SERVER: "{{ docker_host_name }}:{{ maria_container_port }}"
-  REPLACE_MARIA_END_POINT: /maria
-  REPLACE_MARIA_PROXY: {{ docker_host_name }}:{{ maria_container_port }}
+  REPLACE_MARIA_PORT: {{ maria_port }}
+  REPLACE_MARIA_PROXY: {{ docker_host_name }}:{{ maria_port }}

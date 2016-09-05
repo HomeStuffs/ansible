@@ -16,10 +16,7 @@ confluence_container_port: 8090
 confluence_root_folder: /opt/deploy/confluence
 confluence_mount_folder: /home/confluence/app/data
 
-maria_image: maria
-maria_container: maria
-maria_container_port: 3306
-maria_root_folder: /opt/deploy/maria
+maria_port: 3306
 
 nginx_image: nginx
 nginx_container: nginx
