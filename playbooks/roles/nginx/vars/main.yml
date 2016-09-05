@@ -1,5 +1,11 @@
 ---
+
+- include_vars:
+  file: ../../common/vars/main.yml
+  name: common
+
 http_port: 443
+docker_host_name: dockerhost
 
 replace:
   REPLACE_USER: nginx
@@ -22,10 +28,13 @@ replace:
   REPLACE_HTTP_PORT: 443
 
   REPLACE_KIBANA_ENDPOINT: /kibana
-  REPLACE_KIBANA_PROXY: http://dockerhost:5601
+  REPLACE_KIBANA_PROXY: http://{{ docker_host_name }}:{{ kibana_container_port }}
 
   REPLACE_NODE_SERVER_ENDPOINT: /
   REPLACE_NODE_SERVER_PROXY: http://dockerhost:8081
 
   REPLACE_CONFLUENCE_END_POINT: /confluence
   REPLACE_CONFLUENCE_PROXY: http://dockerhost:8090
+
+  REPLACE_MYSQL_END_POINT: /maria
+  REPLACE_MYSQL_PROXY: http://dockerhost:3306
