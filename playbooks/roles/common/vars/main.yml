@@ -18,6 +18,11 @@ confluence_mount_folder: /home/confluence/app/data
 
 maria_port: 3306
 
+django_image: django
+django_container: django
+django_container_port: 8001
+django_root_folder: /opt/deploy/django
+
 nginx_image: nginx
 nginx_container: nginx
 nginx_container_port: 3001
